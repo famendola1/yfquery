@@ -13,7 +13,7 @@ go get github.com/famendola1/yfquery
 The Yahoo offical documentation for their [Fantasy Sports API](https://developer.yahoo.com/fantasysports/guide) is not comprehensive and incomplete, despite being the offical. For a more complete overview of the supported endpoints, see the [README](https://github.com/edwarddistel/yahoo-fantasy-baseball-reader#yahoo-fantasy-api-docs).
 
 ### Before You Start
-Both of these usages require the use of a `*http.Client` that is configured for the Yahoo Fantasy API endpoint. You can use the [github.com/famendola1/yauth](https://pkg.go.dev/github.com/famendola1/yauth) package to configure a `*http.Client` to use.
+The functionality of this package require the use of a `*http.Client` that is configured for the Yahoo Fantasy API endpoint. You can use the [github.com/famendola1/yauth](https://pkg.go.dev/github.com/famendola1/yauth) package to configure a `*http.Client` to use.
 
 ### Query Builders
 The query buiilders were designed to be able to easily generate queries for all the Yahoo Fantasy API endpoints. The builders expose functions that add pieces and parameters to the query. They also expose the following functions:
