@@ -40,12 +40,15 @@ type PlayerSortType string
 
 // Enum for player sort type.
 const (
-	PlayerSortTypeUnknown   PlayerSortType = ""
-	PlayerSortTypeSeason                   = "season"
-	PlayerSortTypeDate                     = "date"
-	PlayerSortTypeWeek                     = "week"
-	PlayerSortTypeLastMonth                = "lastmonth"
-	PlayerSortTypeLastWeek                 = "lastweek"
+	PlayerSortTypeUnknown          PlayerSortType = ""
+	PlayerSortTypeSeason                          = "season"
+	PlayerSortTypeAverageSeason                   = "average_season"
+	PlayerSortTypeDate                            = "date"
+	PlayerSortTypeWeek                            = "week"
+	PlayerSortTypeLastMonth                       = "lastmonth"
+	PlayerSortTypeAverageLastMonth                = "average_lastmonth"
+	PlayerSortTypeLastWeek                        = "lastweek"
+	PlayerSortTypeAverageLastWeek                 = "average_lastweek"
 )
 
 // Players returns a PlayerQuery for the /players endpoint.
