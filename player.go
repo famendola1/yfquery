@@ -10,6 +10,44 @@ type PlayerQuery struct {
 	query
 }
 
+// PlayerStatus represents a player's ownership status.
+type PlayerStatus string
+
+// Enum for a player's ownership status.
+const (
+	PlayerStatusUnknown   PlayerStatus = ""
+	PlayerStatusAvailable              = "A"
+	PlayerStatusFreeAgent              = "FA"
+	PlayerStatusWaiver                 = "W"
+	PlayerStatusTaken                  = "T"
+	PlayerStatusKeeper                 = "K"
+)
+
+// PlayerSortCriteria represents the sort criteria for players.
+type PlayerSortCriteria string
+
+// Enum for player sort criteria.
+const (
+	PlayerSortCriteriaUnknown       PlayerSortCriteria = ""
+	PlayerSortCriteriaName                             = "NAME"
+	PlayerSortCriteriaOverallRank                      = "OR"
+	PlayerSortCriteriaActualRank                       = "AR"
+	PlayerSortCriteriaFantasyPoints                    = "PTS"
+)
+
+// PlayerSortType represent the sort type for players.
+type PlayerSortType string
+
+// Enum for player sort type.
+const (
+	PlayerSortTypeUnknown   PlayerSortType = ""
+	PlayerSortTypeSeason                   = "season"
+	PlayerSortTypeDate                     = "date"
+	PlayerSortTypeWeek                     = "week"
+	PlayerSortTypeLastMonth                = "lastmonth"
+	PlayerSortTypeLastWeek                 = "lastweek"
+)
+
 // Players returns a PlayerQuery for the /players endpoint.
 func Players() *PlayerQuery {
 	return &PlayerQuery{query{resource: "player", isCollection: true}}
@@ -41,13 +79,7 @@ func (p *PlayerQuery) Position(pos string) *PlayerQuery {
 }
 
 // Status adds the "status" parameter with the provided status to the query.
-// Valid statuses are:
-// A (all available players)
-// FA (free agents only)
-// W (waivers only)
-// T (all taken players)
-// K (keepers only)
-func (p *PlayerQuery) Status(status string) *PlayerQuery {
+func (p *PlayerQuery) Status(status PlayerStatus) *PlayerQuery {
 	p.params = append(p.params, fmt.Sprintf("status=%s", status))
 	return p
 }
@@ -59,25 +91,19 @@ func (p *PlayerQuery) Search(name string) *PlayerQuery {
 }
 
 // Sort adds the "sort" parameter with the provided sort criteria to the query.
-// Valid inputs are:
-// {stat_id}
-// NAME (last, first)
-// OR (overall rank)
-// AR (actual rank)
-// PTS (fantasy points)
-func (p *PlayerQuery) Sort(sort string) *PlayerQuery {
+func (p *PlayerQuery) Sort(sort PlayerSortCriteria) *PlayerQuery {
 	p.params = append(p.params, fmt.Sprintf("sort=%s", sort))
 	return p
 }
 
+// SortByStat adds the "sort" parameter with the provided stat id to the query.
+func (p *PlayerQuery) SortByStat(statID int) *PlayerQuery {
+	p.params = append(p.params, fmt.Sprintf("sort=%d", statID))
+	return p
+}
+
 // SortType adds the "sort_type" parameter with the provided type to the query.
-// Valid types are:
-// season
-// date (baseball, basketball, and hockey only)
-// week (football only)
-// lastweek (baseball, basketball, and hockey only)
-// lastmonth
-func (p *PlayerQuery) SortType(sortType string) *PlayerQuery {
+func (p *PlayerQuery) SortType(sortType PlayerSortType) *PlayerQuery {
 	p.params = append(p.params, fmt.Sprintf("sort_type=%s", sortType))
 	return p
 }

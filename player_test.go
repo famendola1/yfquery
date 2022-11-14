@@ -26,7 +26,7 @@ func TestPlayersQuery(t *testing.T) {
 				"/players;position=PG",
 			},
 			{
-				Players().Status("A"),
+				Players().Status(PlayerStatusAvailable),
 				"/players;status=A",
 			},
 			{
@@ -34,8 +34,12 @@ func TestPlayersQuery(t *testing.T) {
 				"/players;search=Kevin+Durant",
 			},
 			{
-				Players().Sort("NAME"),
+				Players().Sort(PlayerSortCriteriaName),
 				"/players;sort=NAME",
+			},
+			{
+				Players().SortByStat(5),
+				"/players;sort=5",
 			},
 			{
 				Players().SortType("season"),

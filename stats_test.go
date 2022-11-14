@@ -10,6 +10,10 @@ func TestStatsQuery(t *testing.T) {
 				"/stats",
 			},
 			{
+				Stats().Week(1),
+				"/stats;type=week;week=1",
+			},
+			{
 				Stats().LastWeek(),
 				"/stats;type=lastweek",
 			},

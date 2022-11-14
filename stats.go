@@ -12,6 +12,12 @@ func Stats() *StatsQuery {
 	return &StatsQuery{query{resource: "stats"}}
 }
 
+// Week adds the "type=week" parameter to the query. Only supported by Yahoo for football.
+func (s *StatsQuery) Week(week int) *StatsQuery {
+	s.params = append(s.params, []string{"type=week", fmt.Sprintf("week=%d", week)}...)
+	return s
+}
+
 // LastWeek adds the "type=lastweek" parameter to the query.
 func (s *StatsQuery) LastWeek() *StatsQuery {
 	s.params = append(s.params, "type=lastweek")
