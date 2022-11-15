@@ -37,6 +37,9 @@ type Player struct {
 	PlayerKey                string              `xml:"player_key"`
 	PlayerID                 int                 `xml:"player_id"`
 	Name                     Name                `xml:"name"`
+	FirstName                string              `xml:"first_name"`
+	FirstNameInitials        string              `xml:"first_name_initials"`
+	LastName                 string              `xml:"last_name"`
 	EditorialPlayerKey       string              `xml:"editorial_player_key"`
 	EditorialTeamKey         string              `xml:"editorial_team_key"`
 	EditorialTeamFullName    string              `xml:"editorial_team_full_name"`
@@ -328,27 +331,29 @@ type Teams struct {
 
 // Team represents a Yahoo team.
 type Team struct {
-	TeamKey               string             `xml:"team_key"`
-	TeamID                int                `xml:"team_id"`
-	Name                  string             `xml:"name"`
-	IsOwnedByCurrentLogin bool               `xml:"is_owned_by_current_login"`
-	URL                   string             `xml:"url"`
-	TeamLogos             TeamLogos          `xml:"team_logos"`
-	WaiverPriority        int                `xml:"waiver_priority"`
-	NumberOfMoves         int                `xml:"number_of_moves"`
-	NumberOfTrades        int                `xml:"number_of_trades"`
-	RosterAdds            RosterAdds         `xml:"roster_adds"`
-	LeagueScoringType     string             `xml:"league_scoring_type"`
-	DraftPosition         int                `xml:"draft_position"`
-	HasDraftGrade         bool               `xml:"has_draft_grade"`
-	Managers              Managers           `xml:"managers"`
-	TeamStats             TeamStats          `xml:"team_stats"`
-	TeamPoints            TeamPoints         `xml:"team_points"`
-	TeamRemainingGames    TeamRemainingGames `xml:"team_remaining_games"`
-	ClinchedPlayoffs      bool               `xml:"clinched_playoffs"`
-	TeamStandings         TeamStandings      `xml:"team_standings"`
-	Roster                Roster             `xml:"roster"`
-	Matchups              Matchups           `xml:"matchups"`
+	TeamKey                  string                   `xml:"team_key"`
+	TeamID                   int                      `xml:"team_id"`
+	Name                     string                   `xml:"name"`
+	IsOwnedByCurrentLogin    bool                     `xml:"is_owned_by_current_login"`
+	URL                      string                   `xml:"url"`
+	TeamLogos                TeamLogos                `xml:"team_logos"`
+	WaiverPriority           int                      `xml:"waiver_priority"`
+	NumberOfMoves            int                      `xml:"number_of_moves"`
+	NumberOfTrades           int                      `xml:"number_of_trades"`
+	RosterAdds               RosterAdds               `xml:"roster_adds"`
+	LeagueScoringType        string                   `xml:"league_scoring_type"`
+	DraftPosition            int                      `xml:"draft_position"`
+	HasDraftGrade            bool                     `xml:"has_draft_grade"`
+	Managers                 Managers                 `xml:"managers"`
+	TeamStats                TeamStats                `xml:"team_stats"`
+	TeamPoints               TeamPoints               `xml:"team_points"`
+	TeamRemainingGames       TeamRemainingGames       `xml:"team_remaining_games"`
+	ClinchedPlayoffs         bool                     `xml:"clinched_playoffs"`
+	TeamStandings            TeamStandings            `xml:"team_standings"`
+	Roster                   Roster                   `xml:"roster"`
+	Matchups                 Matchups                 `xml:"matchups"`
+	RecommendedTradePartners RecommendedTradePartners `xml:"recommended_trade_partners"`
+	PositionalRanks          PositionalRanks          `xml:"positional_ranks"`
 }
 
 // TeamLogos contains a list of team logos.
@@ -419,6 +424,8 @@ type Total struct {
 // TeamStandings contains information about a Team's ranking in their league.
 type TeamStandings struct {
 	Rank                    int                     `xml:"rank"`
+	PlayoffSeed             int                     `xml:"playoff_seed"`
+	GamesBack               string                  `xml:"games_back"`
 	OutcomeTotals           OutcomeTotals           `xml:"outcome_totals"`
 	DivisionalOutcomeTotals DivisionalOutcomeTotals `xml:"divisional_outcome_totals"`
 }
@@ -574,4 +581,38 @@ type DraftResult struct {
 	Round     string `xml:"round"`
 	TeamKey   string `xml:"team_key"`
 	PlayerKey string `xml:"player_key"`
+}
+
+// RecommendedTradePartners is a list of recommended trade partners.
+type RecommendedTradePartners struct {
+	RecommendedTradePartner []RecommendedTradePartner `xml:"recommended_trade_partner"`
+}
+
+// RecommendedTradePartner is a trade partner recommended by Yahoo.
+type RecommendedTradePartner struct {
+	TeamKey string `xml:"team_key"`
+}
+
+// PositionalRanks is a list of positional ranks.
+type PositionalRanks struct {
+	PositionalRank PositionalRank `xml:"positional_rank"`
+}
+
+// PositionalRank holds the team's comparitive rank information for a postion.
+type PositionalRank struct {
+	Position        string          `xml:"position"`
+	Rank            string          `xml:"rank"`
+	Grade           string          `xml:"grade"`
+	StartingPlayers StartingPlayers `xml:"starting_players"`
+	BenchPlayers    BenchPlayers    `xml:"bench_players"`
+}
+
+// StartingPlayers is a list of starting players.
+type StartingPlayers struct {
+	Player []Player `xml:"player"`
+}
+
+// BenchPlayers is a list of bench players.
+type BenchPlayers struct {
+	Player []Player `xml:"player"`
 }

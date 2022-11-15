@@ -78,6 +78,10 @@ func TestPlayersQuery(t *testing.T) {
 				"/players;player_keys=253.p.4365/draft_analysis",
 			},
 			{
+				Players().Key("253.p.4365").Opponent(),
+				"/players;player_keys=253.p.4365/opponent",
+			},
+			{
 				Players().Key("253.p.4365").Ownership().PercentOwned(),
 				"/players;player_keys=253.p.4365;out=ownership,percent_owned",
 			},
@@ -118,6 +122,10 @@ func TestPlayerQuery(t *testing.T) {
 			{
 				Player().Key("253.p.4365").PercentOwned(),
 				"/player/253.p.4365/percent_owned",
+			},
+			{
+				Player().Key("253.p.4365").Opponent(),
+				"/player/253.p.4365/opponent",
 			},
 			{
 				Player().Key("253.p.4365").DraftAnalysis(),

@@ -80,6 +80,22 @@ func (t *TeamQuery) DraftResults() *TeamQuery {
 	return t
 }
 
+// RecommendedTradePartners adds the "recommended_trade_partners" subresource to the request. If combined with
+// other subresources, they are all combined into the "out" parameter, otherwise
+// it is added to the request path (i.e. team/recommended_trade_partners).
+func (t *TeamQuery) RecommendedTradePartners() *TeamQuery {
+	t.outs = append(t.outs, "recommended_trade_partners")
+	return t
+}
+
+// PositionalRanks adds the "positional_ranks" subresource to the request. If combined with
+// other subresources, they are all combined into the "out" parameter, otherwise
+// it is added to the request path (i.e. team/positional_ranks).
+func (t *TeamQuery) PositionalRanks() *TeamQuery {
+	t.outs = append(t.outs, "positional_ranks")
+	return t
+}
+
 // StatsWithDefaults adds the "stats" subresource to the request. If combined with
 // other subresources, they are all combined into the "out" parameter, otherwise
 // it is added to the request path (i.e. team/stats).

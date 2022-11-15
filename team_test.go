@@ -42,6 +42,14 @@ func TestTeamsQuery(t *testing.T) {
 				"/teams;team_keys=nba.l.12345.t.1/draftresults",
 			},
 			{
+				Teams().Key("nba.l.12345.t.1").RecommendedTradePartners(),
+				"/teams;team_keys=nba.l.12345.t.1/recommended_trade_partners",
+			},
+			{
+				Teams().Key("nba.l.12345.t.1").PositionalRanks(),
+				"/teams;team_keys=nba.l.12345.t.1/positional_ranks",
+			},
+			{
 				Teams().Key("nba.l.12345.t.1").Standings(),
 				"/teams;team_keys=nba.l.12345.t.1/standings",
 			},
@@ -98,6 +106,14 @@ func TestTeamQuery(t *testing.T) {
 			{
 				Team().Key("nba.l.12345.t.1").DraftResults(),
 				"/team/nba.l.12345.t.1/draftresults",
+			},
+			{
+				Team().Key("nba.l.12345.t.1").RecommendedTradePartners(),
+				"/team/nba.l.12345.t.1/recommended_trade_partners",
+			},
+			{
+				Team().Key("nba.l.12345.t.1").PositionalRanks(),
+				"/team/nba.l.12345.t.1/positional_ranks",
 			},
 			{
 				Team().Key("nba.l.12345.t.1").Standings(),
