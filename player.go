@@ -155,6 +155,14 @@ func (p *PlayerQuery) Ownership() *PlayerQuery {
 	return p
 }
 
+// Opponent adds the "opponent" subresource to the request. If combined with
+// other subresources, they are all combined into the "out" parameter, otherwise
+// it is added to the request path (i.e. player/opponent).
+func (p *PlayerQuery) Opponent() *PlayerQuery {
+	p.outs = append(p.outs, "opponent")
+	return p
+}
+
 // PercentOwned adds the "percent_owned" subresource to the request. If combined with
 // other subresources, they are all combined into the "out" parameter, otherwise
 // it is added to the request path (i.e. player/percent_owned).

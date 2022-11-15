@@ -63,6 +63,7 @@ type Player struct {
 	PercentOwned             PercentOwned        `xml:"percent_owned"`
 	DraftAnalysis            DraftAnalysis       `xml:"draft_analysis"`
 	Ownership                Ownership           `xml:"ownership"`
+	Opponent                 string              `xml:"opponent"`
 }
 
 // Name contains information about a Player's name.
