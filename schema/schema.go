@@ -566,6 +566,8 @@ type Ownership struct {
 	OwnershipType string `xml:"ownership_type"`
 	OwnerTeamKey  string `xml:"owner_team_key"`
 	OwnerTeamName string `xml:"owner_team_name"`
+	WaiverDate    string `xml:"waiver_date"`
+	DisplayDate   string `xml:"display_date"`
 	Team          Team   `xml:"team"`
 }
 
