@@ -44,15 +44,15 @@ func (q *query) ToString() string {
 		}
 	}
 
+	if len(q.params) != 0 {
+		uri += (";" + strings.Join(q.params, ";"))
+	}
+
 	if len(q.outs) == 1 {
 		uri += fmt.Sprintf("/%s", q.outs[0])
 	}
 	if len(q.outs) > 1 {
 		uri += fmt.Sprintf(";out=%s", strings.Join(q.outs, ","))
-	}
-
-	if len(q.params) != 0 {
-		uri += (";" + strings.Join(q.params, ";"))
 	}
 
 	if uri[0] != '/' {
