@@ -262,6 +262,7 @@ type Game struct {
 	PositionsTypes     PositionsTypes  `xml:"position_types"`
 	GameWeeks          GameWeeks       `xml:"game_weeks"`
 	StatCategories     StatCategories  `xml:"stat_categories"`
+	Players            Players         `xml:"players"`
 }
 
 // Games is a list Games.
