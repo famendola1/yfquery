@@ -28,18 +28,18 @@ func TestParseTeam(t *testing.T) {
 		Name:                  "Bring Me A Shot",
 		IsOwnedByCurrentLogin: true,
 		URL:                   "https://basketball.fantasysports.yahoo.com/nba/16883/1",
-		TeamLogos: schema.TeamLogos{
+		TeamLogos: &schema.TeamLogos{
 			TeamLogo: []schema.TeamLogo{
 				{Size: "large",
 					URL: "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/6d1c4b1ab7f7d94e33ea9f4a3306381954a2880b244fe54ca8dfea504c7be242.jpg"}}},
 		WaiverPriority:    9,
 		NumberOfMoves:     23,
 		NumberOfTrades:    0,
-		RosterAdds:        schema.RosterAdds{CoverageType: "week", CoverageValue: 4, Value: 3},
+		RosterAdds:        &schema.RosterAdds{CoverageType: "week", CoverageValue: 4, Value: 3},
 		LeagueScoringType: "headone",
 		DraftPosition:     4,
 		HasDraftGrade:     false,
-		Managers: schema.Managers{
+		Managers: &schema.Managers{
 			Manager: []schema.Manager{
 				{ManagerID: 1,
 					Nickname:       "Fabio",
@@ -65,19 +65,19 @@ func TestParsePlayer(t *testing.T) {
 	want := &schema.Player{
 		PlayerKey:                "410.p.6065",
 		PlayerID:                 6065,
-		Name:                     schema.Name{Full: "Shake Milton", First: "Shake", Last: "Milton", ASCIIFirst: "Shake", ASCIILast: "Milton"},
+		Name:                     &schema.Name{Full: "Shake Milton", First: "Shake", Last: "Milton", ASCIIFirst: "Shake", ASCIILast: "Milton"},
 		EditorialPlayerKey:       "nba.p.6065",
 		EditorialTeamKey:         "nba.t.20",
 		EditorialTeamFullName:    "Philadelphia 76ers",
 		EditorialTeamAbbr:        "PHI",
 		UniformNumber:            18,
 		DisplayPosition:          "PG,SG",
-		Headshot:                 schema.Headshot{URL: "https://s.yimg.com/iu/api/res/1.2/PTF3UNtaGJzwH3Ah22R0Ow--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10142021/6065.png", Size: "small"},
+		Headshot:                 &schema.Headshot{URL: "https://s.yimg.com/iu/api/res/1.2/PTF3UNtaGJzwH3Ah22R0Ow--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10142021/6065.png", Size: "small"},
 		ImageURL:                 "https://s.yimg.com/iu/api/res/1.2/PTF3UNtaGJzwH3Ah22R0Ow--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10142021/6065.png",
 		IsUndroppable:            false,
 		PositionType:             "P",
 		PrimaryPosition:          "PG",
-		EligiblePositions:        schema.EligiblePositions{Position: []string{"PG", "SG", "G", "Util"}},
+		EligiblePositions:        &schema.EligiblePositions{Position: []string{"PG", "SG", "G", "Util"}},
 		HasPlayerNotes:           true,
 		PlayerNotesLastTimestamp: 1636515545}
 	got := &schema.Player{}
@@ -99,13 +99,13 @@ func TestParseTransaction(t *testing.T) {
 		Type:           "add/drop",
 		Status:         "successful",
 		Timestamp:      1636674697,
-		Players: schema.Players{
+		Players: &schema.Players{
 			Count: 2,
 			Player: []schema.Player{
 				{PlayerKey: "410.p.6450",
 					PlayerID: 6450,
-					Name:     schema.Name{Full: "Paul Reed"},
-					TransactionData: schema.TransactionData{
+					Name:     &schema.Name{Full: "Paul Reed"},
+					TransactionData: &schema.TransactionData{
 						Type:                "add",
 						SourceType:          "freeagents",
 						DestinationType:     "team",
@@ -113,8 +113,8 @@ func TestParseTransaction(t *testing.T) {
 						DestinationTeamName: "Anti-Vax and INJ"}},
 				{PlayerKey: "410.p.4488",
 					PlayerID: 4488,
-					Name:     schema.Name{Full: "George Hill"},
-					TransactionData: schema.TransactionData{
+					Name:     &schema.Name{Full: "George Hill"},
+					TransactionData: &schema.TransactionData{
 						Type:            "drop",
 						SourceType:      "team",
 						DestinationType: "waivers",
